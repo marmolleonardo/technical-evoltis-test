@@ -1,29 +1,16 @@
-# README #
+# Evoltis Prueba Técnica
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 16.2.0.
 
-### What is this repository for? ###
+## Development
+Recuerda ejecutar `npm install`!
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+## Development server
 
-### How do I get set up? ###
+Ejecute `ng serve` para un servidor de desarrollo. Navegue hasta `http://localhost:4200/`. La aplicación se recargará automáticamente si cambia alguno de los archivos fuente.
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+## Code scaffolding
 
-### Contribution guidelines ###
+Ejecute `ng generate component component-name` para generar un nuevo componente. También puedes usar `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-* Writing tests
-* Code review
-* Other guidelines
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
