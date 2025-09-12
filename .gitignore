@@ -1,0 +1,84 @@
+# ---- General ----
+*.log
+*.tmp
+*.temp
+*.swp
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ---- .NET / Visual Studio ----
+# Build outputs
+**/bin/
+**/obj/
+# VS cache/options
+.vs/
+# Test results
+TestResult*/
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+# Paket
+.paket/
+paket-files/
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+# Rider
+.idea/
+# NCrunch
+*.ncrunch*
+_NCrunch_*/
+# NuGet
+**/packages/
+*.nupkg
+# Others
+*.dbmdl
+*.jfm
+
+# ---- Node / Frontend SSR (e.g., Next.js) ----
+node_modules/
+.npm/
+.yarn/
+.pnpm-store/
+
+# Next.js / general SSR outputs
+.next/
+.out/
+.next-cache/
+.vercel/
+.turbo/
+.nuxt/
+.dist/
+dist/
+build/
+.cache/
+coverage/
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# OS metadata
+ehthumbs.db
+Icon?
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Misc
+*.orig
