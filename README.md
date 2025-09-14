@@ -7,4 +7,4 @@ This repository contains two projects:
 
 Branches
 - main: base code extracted from the first commit of each project.
-- feature/cambios: current state (HEAD) of each project applied on top of base.
+- feature/add_model_product: current state (HEAD) of each project applied on top of base.

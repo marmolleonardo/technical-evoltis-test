@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
+using Microsoft.EntityFrameworkCore;
 using technical_tests_backend_ssr.Models;
 
 namespace technical_tests_backend_ssr.Domain

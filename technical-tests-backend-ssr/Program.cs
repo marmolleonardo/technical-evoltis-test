@@ -23,7 +23,6 @@ builder.Services.AddScoped<FluentValidation.IValidator<technical_tests_backend_s
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
 // Configure Entity Framework Core with MySQL (Pomelo)
 // Prefer the MYSQL_CONNECTION_STRING environment variable (includes server, database, user, password)
 var envConn = Environment.GetEnvironmentVariable("MYSQL_CONNECTION_STRING");
@@ -73,7 +72,6 @@ builder.Services.AddCors(options =>
         .AllowCredentials();
     });
 });
-
 
 var app = builder.Build();
 
