@@ -1,0 +1,71 @@
+<div class="p-3">
+  <h2 class="mb-3">Productos</h2>
+
+  <p-toolbar styleClass="mb-3">
+    <div class="p-toolbar-group-left">
+      <button pButton label="Nuevo" icon="pi pi-plus" (click)="openCreate()"></button>
+    </div>
+    <div class="p-toolbar-group-right">
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" placeholder="Buscar" (input)="dt.filterGlobal($any($event.target).value, 'contains')" />
+      </span>
+    </div>
+  </p-toolbar>
+
+  <div *ngIf="(loading$ | async)">Cargando...</div>
+  <div *ngIf="(error$ | async) as err" class="error mb-2">Error: {{ err }}</div>
+
+  <p-table #dt [value]="(products$ | async) || []" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'"
+          [globalFilterFields]="['name','price']" [sortMode]="'multiple'">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="name">Nombre <p-sortIcon field="name"></p-sortIcon></th>
+        <th pSortableColumn="price">Precio <p-sortIcon field="price"></p-sortIcon></th>
+        <th>Creado</th>
+        <th>Actualizado</th>
+        <th style="width:10rem">Acciones</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-p>
+      <tr>
+        <td>{{ p.name }}</td>
+        <td>{{ p.price | number:'1.0-2' }}</td>
+        <td>{{ p.createdAt | date:'short' }}</td>
+        <td>{{ p.UpdatedAt | date:'short' }}</td>
+        <td class="flex gap-2">
+          <button pButton icon="pi pi-pencil" class="p-button-text p-button-sm" (click)="openEdit(p)" title="Editar"></button>
+          <button pButton icon="pi pi-trash" class="p-button-text p-button-danger p-button-sm" (click)="confirmDelete(p)" title="Eliminar"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p-dialog [header]="isEdit ? 'Editar Producto' : 'Nuevo Producto'" [(visible)]="dialogVisible" [modal]="true" [closable]="false" [style]="{width:'420px'}">
+    <form [formGroup]="form" (ngSubmit)="save()" class="p-fluid">
+      <div class="field">
+        <label for="name" class="mb-1">Nombre</label>
+        <input id="name" type="text" pInputText formControlName="name"
+              [ngClass]="{'p-invalid': form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)}" />
+        <small class="p-error" *ngIf="form.controls['name'].touched && form.controls['name'].hasError('required')">Requerido</small>
+        <small class="p-error" *ngIf="form.controls['name'].touched && form.controls['name'].hasError('maxlength')">Máximo 100 caracteres</small>
+      </div>
+
+      <div class="field">
+        <label for="price" class="mb-1">Precio</label>
+        <p-inputNumber inputId="price" formControlName="price" mode="currency" currency="USD" locale="es-AR"
+                      [inputStyleClass]="form.controls['price'].invalid && (form.controls['price'].dirty || form.controls['price'].touched) ? 'p-invalid' : ''">
+        </p-inputNumber>
+        <small class="p-error" *ngIf="form.controls['price'].touched && form.controls['price'].hasError('required')">Requerido</small>
+        <small class="p-error" *ngIf="form.controls['price'].touched && form.controls['price'].hasError('min')">Debe ser >= 0</small>
+      </div>
+
+      <div class="flex justify-content-end gap-2 mt-3">
+        <button type="button" pButton label="Cancelar" class="p-button-text" (click)="dialogVisible=false"></button>
+        <button type="submit" pButton [label]="isEdit ? 'Guardar' : 'Crear'" [disabled]="form.invalid || (loading$ | async)"></button>
+      </div>
+    </form>
+  </p-dialog>
+
+  <p-confirmDialog></p-confirmDialog>
+</div>
